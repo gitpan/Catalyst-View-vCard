@@ -1,0 +1,15 @@
+---
+name: Catalyst-View-vCard
+version: 0.01
+author:
+  - Brian Cassidy <bricas@cpan.org>
+abstract: vCard view for Catalyst
+license: perl
+requires:
+  Catalyst: 0
+  Text::vCard: 0
+provides:
+  Catalyst::View::vCard:
+    file: lib/Catalyst/View/vCard.pm
+    version: 0.01
+generated_by: Module::Build version 0.2611
