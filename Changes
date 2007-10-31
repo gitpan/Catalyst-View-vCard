@@ -1,4 +1,7 @@
 Revision history for Perl extension Catalyst::View::vCard.
 
-0.01  Tue Jan 10 2005
-	- original version
+0.02  Wed Oct 31 2007
+    - switch to Module::Install
+
+0.01  Tue Jan 10 2006
+    - original version

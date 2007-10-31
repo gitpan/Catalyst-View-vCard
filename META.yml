@@ -1,15 +1,20 @@
----
-name: Catalyst-View-vCard
-version: 0.01
-author:
-  - Brian Cassidy <bricas@cpan.org>
+--- 
 abstract: vCard view for Catalyst
+author: Brian Cassidy <bricas@cpan.org>
+build_requires: 
+  Test::More: 0
+distribution_type: module
+generated_by: Module::Install version 0.67
 license: perl
-requires:
-  Catalyst: 0
+meta-spec: 
+  url: http://module-build.sourceforge.net/META-spec-v1.3.html
+  version: 1.3
+name: Catalyst-View-vCard
+no_index: 
+  directory: 
+    - inc
+    - t
+requires: 
+  Catalyst::Runtime: 0
   Text::vCard: 0
-provides:
-  Catalyst::View::vCard:
-    file: lib/Catalyst/View/vCard.pm
-    version: 0.01
-generated_by: Module::Build version 0.2611
+version: 0.02

@@ -7,8 +7,9 @@ use base qw( Catalyst::View );
 
 use Text::vCard::Addressbook;
 
-our $VERSION = '0.01';
-my @fields   = qw(
+our $VERSION = '0.02';
+
+my @fields = qw(
     fn fullname email bd birthday mailer tz timezone
     title role note prodid rev uid url class nickname
     photo version
@@ -58,19 +59,20 @@ C<vcards> key of the stash.
 =cut
 
 sub process {
-    my( $self, $c, $vcards ) = @_;
-    $vcards  = $c->stash->{ vcards } unless ref $vcards;
+    my ( $self, $c, $vcards ) = @_;
+    $vcards = $c->stash->{ vcards } unless ref $vcards;
     my $book = Text::vCard::Addressbook->new;
-    
+
     for my $object ( @$vcards ) {
         my $vcard = $book->add_vcard;
         $self->convert_to_vcard( $c, $object, $vcard );
     }
 
     my $filename = $c->stash->{ filename } || 'vcard';
-    
+
     $c->res->content_type( 'text/x-vcard; charset: UTF-8' );
-    $c->res->header( 'Content-Disposition' => qq(inline; filename="$filename.vcf") );
+    $c->res->header(
+        'Content-Disposition' => qq(inline; filename="$filename.vcf") );
     $c->res->body( $book->export );
 
     return 1;
@@ -85,31 +87,26 @@ scheme of L<Text::vCard>'s methods.
 =cut
 
 sub convert_to_vcard {
-    my( $self, $c, $in, $out ) = @_;
-    
+    my ( $self, $c, $in, $out ) = @_;
+
     return unless my $type = ref $in;
-    
-    for( @fields ) {
-        my $value = $type eq 'HASH'
-            ? $in->{ $_ }
-            : $in->can( $_ )
-                ? $in->$_
-                : undef;
+
+    for ( @fields ) {
+        my $value
+            = $type eq 'HASH' ? $in->{ $_ }
+            : $in->can( $_ ) ? $in->$_
+            :                  undef;
         $out->$_( $value ) if $value;
     }
 }
 
 =head1 AUTHOR
 
-=over 4 
-
-=item * Brian Cassidy E<lt>bricas@cpan.orgE<gt>
-
-=back
+Brian Cassidy E<lt>bricas@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2006 by Brian Cassidy
+Copyright 2007 by Brian Cassidy
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
