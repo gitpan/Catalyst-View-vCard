@@ -10,7 +10,7 @@ SYNOPSIS
         $c->forward( $c->view( 'vCard' ) );
     
         # in a view...
-        package MyApp::View:;vCard;
+        package MyApp::View::vCard;
     
         use base qw( Catalyst::View::vCard );
     
@@ -43,12 +43,13 @@ AUTHOR
     Brian Cassidy <bricas@cpan.org>
 
 COPYRIGHT AND LICENSE
-    Copyright 2008 by Brian Cassidy
+    Copyright 2006-2009 by Brian Cassidy
 
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
 
 SEE ALSO
-    * Catalyst
-    * Text::vCard
+    *   Catalyst
+
+    *   Text::vCard
 

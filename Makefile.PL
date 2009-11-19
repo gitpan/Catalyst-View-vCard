@@ -1,4 +1,4 @@
-use inc::Module::Install 0.68;
+use inc::Module::Install 0.87;
 
 if( -e 'MANIFEST.SKIP' ) {
     system( 'pod2text lib/Catalyst/View/vCard.pm > README' );
@@ -14,5 +14,6 @@ requires 'Text::vCard';
 
 test_requires 'Test::More';
 
-auto_install;
+repository 'http://dev.catalyst.perl.org/repos/Catalyst/trunk/Catalyst-View-vCard/';
+
 WriteAll;

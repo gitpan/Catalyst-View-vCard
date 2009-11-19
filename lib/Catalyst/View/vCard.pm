@@ -7,7 +7,7 @@ use base qw( Catalyst::View );
 
 use Text::vCard::Addressbook;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 my @fields = qw(
     fn fullname email bd birthday mailer tz timezone
@@ -29,7 +29,7 @@ Catalyst::View::vCard - vCard view for Catalyst
     $c->forward( $c->view( 'vCard' ) );
     
     # in a view...
-    package MyApp::View:;vCard;
+    package MyApp::View::vCard;
     
     use base qw( Catalyst::View::vCard );
     
@@ -106,7 +106,7 @@ Brian Cassidy E<lt>bricas@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2008 by Brian Cassidy
+Copyright 2006-2009 by Brian Cassidy
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
